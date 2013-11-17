@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using MyCouch;
 using Adagi.Models;
-using Adagi.Utilities;
+using Adagi.Utilities.JsonApi;
 using System.Threading.Tasks;
 using MyCouch.Responses;
 using System.Runtime.Serialization;
@@ -18,13 +18,13 @@ namespace Adagi.API
         // GET api/properties
         public async Task<object> Get()
         {
-            return await JsonApi.GetProperties();
+            return await Properties.Get();
         }
 
         // GET api/properties/ABC213
         public async Task<object> Get(string id)
         {
-            return await JsonApi.GetProperties(id);
+            return await Properties.Get(id);
         }
 
         // POST api/properties

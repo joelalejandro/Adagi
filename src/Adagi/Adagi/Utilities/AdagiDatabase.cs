@@ -20,23 +20,5 @@ namespace Adagi.Utilities
             uri.SetDbName(Settings.Get("Adagi.Database.Name"));
             return new Client(uri.Build());
         }
-
-        public async static Task<ViewQueryResponse<Property>> GetProperties()
-        {
-            using (var db = Database.Connect())
-            {
-                var query = new QueryViewRequest("Properties", "All").Configure(q => q.Limit(300).Reduce(false));
-                return await db.Views.QueryAsync<Property>(query);
-            }
-        }
-
-        public async static Task<ViewQueryResponse<Property>> GetProperties(string ReferenceCode)
-        {
-            using (var db = Database.Connect())
-            {
-                var query = new QueryViewRequest("Properties", "All").Configure(q => q.Key<string>(ReferenceCode).Reduce(false));
-                return await db.Views.QueryAsync<Property>(query);
-            }
-        }
     }
 }

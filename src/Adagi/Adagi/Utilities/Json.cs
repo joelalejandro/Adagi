@@ -13,5 +13,10 @@ namespace Adagi.Utilities
             var js = new JavaScriptSerializer();
             return js.DeserializeObject(js.Serialize(obj));
         }
+
+        public static T Deserealize<T>(string body)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(body);
+        }
     }
 }

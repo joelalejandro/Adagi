@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Adagi.Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,7 +14,7 @@ namespace Adagi.Models
         public User()
             : base()
         {
-            
+        
         }
 
         protected string _Id;

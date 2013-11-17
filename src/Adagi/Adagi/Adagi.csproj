@@ -183,12 +183,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\PropertiesController.cs" />
+    <Compile Include="API\PropertyTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Interfaces\IBaseModel.cs" />
     <Compile Include="Models\FeatureType.cs" />
     <Compile Include="Models\FeatureValue.cs" />
+    <Compile Include="Models\Interfaces\IDated.cs" />
+    <Compile Include="Models\Interfaces\IOwneable.cs" />
+    <Compile Include="Models\Interfaces\ITranslatable.cs" />
+    <Compile Include="Models\Interfaces\IUserCreatable.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Property.cs" />
@@ -198,8 +204,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\AdagiDatabase.cs" />
     <Compile Include="Utilities\DatabaseApi\Properties.cs" />
+    <Compile Include="Utilities\DatabaseApi\PropertyTypes.cs" />
     <Compile Include="Utilities\Json.cs" />
     <Compile Include="Utilities\JsonApi\Properties.cs" />
+    <Compile Include="Utilities\JsonApi\PropertyTypes.cs" />
     <Compile Include="Utilities\Settings.cs" />
   </ItemGroup>
   <ItemGroup>

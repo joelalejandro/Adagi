@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Ensure.That</id>
+    <version>1.0.0</version>
+    <title>Ensure.That</title>
+    <authors>danielwertheim</authors>
+    <owners>danielwertheim</owners>
+    <licenseUrl>https://github.com/danielwertheim/Ensure.That#license</licenseUrl>
+    <projectUrl>https://github.com/danielwertheim/ensure.that</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple guard clause project helping you with validation and uniformed exception throwing when validating args.
+        This is the portable class library distribution. There is also a source package, Ensure.That.Source.</description>
+    <summary>Yet another guard clause project.</summary>
+    <copyright>©Daniel Wertheim</copyright>
+    <tags>argument validation guard clause</tags>
+    <references>
+      <reference file="EnsureThat.dll" />
+    </references>
+  </metadata>
+</package>

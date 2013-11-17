@@ -2,13 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
+using System.Runtime.Serialization;
 
 namespace Adagi.Models
 {
+    [DataContract]
     public class BaseModel : IBaseModel, IDateInfoModel
     {
-        public string Id { get; set; }
-        public string Rev { get; set; }
+        protected string _Id;
+        protected string _Rev;
+
+        [DataMember(Name="Id")]
+        public string Id { get { return _Id; } set { _Id = value; } }
+        [DataMember(Name = "Rev")]
+        public string Rev { get { return _Rev; } set { _Rev = value; } }
+        [DataMember(Name="ModelType")]
         public string ModelType
         {
             get
@@ -17,13 +26,14 @@ namespace Adagi.Models
             }
         }
 
-
+        [DataMember(Name="DateCreated")]
         public DateTime DateCreated
         {
             get;
             set;
         }
 
+        [DataMember(Name="DateLastModified")]
         public DateTime DateLastModified
         {
             get;

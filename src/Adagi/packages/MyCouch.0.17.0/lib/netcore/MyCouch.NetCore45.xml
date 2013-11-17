@@ -1,0 +1,943 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyCouch.NetCore45</name>
+    </assembly>
+    <members>
+        <member name="P:MyCouch.IClient.Connection">
+            <summary>
+            The underlying <see cref="T:MyCouch.IConnection"/> used to communicate with CouchDb.
+            </summary>
+        </member>
+        <member name="P:MyCouch.IClient.Serializer">
+            <summary>
+            The Serializer associated with this client instance. Use this if you want
+            to serialize or deserialize using the same behavior that the provider
+            has.
+            </summary>
+            <remarks>If you want a serializer that supports entity conventions, check <see cref="P:MyCouch.IEntities.Serializer"/></remarks>
+        </member>
+        <member name="P:MyCouch.IClient.Changes">
+            <summary>
+            Changes oriented API operations, for getting or subscribinh to changes in the database.
+            </summary>
+        </member>
+        <member name="P:MyCouch.IClient.Attachments">
+            <summary>
+            Attachment oriented API operations, for accessing and managing attachments to documents.
+            </summary>
+        </member>
+        <member name="P:MyCouch.IClient.Databases">
+            <summary>
+            Database oriented API operations.
+            </summary>
+        </member>
+        <member name="P:MyCouch.IClient.Documents">
+            <summary>
+            Document oriented API operations, for accessing and managing RAW documents.
+            </summary>
+        </member>
+        <member name="P:MyCouch.IClient.Entities">
+            <summary>
+            Entity oriented API operations, for accessing and managing documents as entities.
+            </summary>
+        </member>
+        <member name="P:MyCouch.IClient.Views">
+            <summary>
+            View oriented API operations, for accessing and managing views.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.SerializationConfigurationFn">
+            <summary>
+            Used e.g. for bootstraping components relying on serialization, e.g <see cref="T:MyCouch.Serialization.ISerializer"/>
+            used in <see cref="P:MyCouch.IClient.Serializer"/>.
+            </summary>
+            <remarks>For entity serialization configuration, <see cref="P:MyCouch.ClientBootstraper.EntitySerializationConfigurationFn"/>.</remarks>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.EntitySerializationConfigurationFn">
+            <summary>
+            Used e.g. for bootstraping components relying on entity serialization, e.g <see cref="T:MyCouch.Serialization.ISerializer"/>
+            used in <see cref="P:MyCouch.IEntities.Serializer"/> used in <see cref="P:MyCouch.IClient.Entities"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.EntityReflectorFn">
+            <summary>
+            Used e.g. for boostraping components that needs to be able to read and set values
+            effectively to entities. Used e.g. in <see cref="P:MyCouch.IEntities.Reflector"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.SerializerFn">
+            <summary>
+            Used e.g. for bootstraping <see cref="P:MyCouch.IClient.Serializer"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.EntitySerializerFn">
+            <summary>
+            Used e.g. for bootstraping <see cref="P:MyCouch.IEntities.Serializer"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.ChangesFn">
+            <summary>
+            Used e.g. for bootstraping <see cref="P:MyCouch.IClient.Changes"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.AttachmentsFn">
+            <summary>
+            Used e.g. for bootstraping <see cref="P:MyCouch.IClient.Attachments"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.DatabasesFn">
+            <summary>
+            Used e.g. for bootstraping <see cref="P:MyCouch.IClient.Databases"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.DocumentsFn">
+            <summary>
+            Used e.g. for bootstraping <see cref="P:MyCouch.IClient.Documents"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.EntitiesFn">
+            <summary>
+            Used e.g. for bootstraping <see cref="P:MyCouch.IClient.Entities"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.ClientBootstraper.ViewsFn">
+            <summary>
+            Used e.g. for bootstraping <see cref="P:MyCouch.IClient.Views"/>.
+            </summary>
+        </member>
+        <member name="T:MyCouch.IAttachments">
+            <summary>
+            Used to access and manage attachments to documents.
+            </summary>
+        </member>
+        <member name="M:MyCouch.IAttachments.GetAsync(System.String,System.String)">
+            <summary>
+            Returns only the requested attachment and not the complete document.
+            </summary>
+            <param name="docId"></param>
+            <param name="attachmentName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IAttachments.GetAsync(System.String,System.String,System.String)">
+            <summary>
+            Returns only the requested attachment and not the complete document.
+            </summary>
+            <param name="docId"></param>
+            <param name="docRev"></param>
+            <param name="attachmentName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IAttachments.GetAsync(MyCouch.Requests.GetAttachmentRequest)">
+            <summary>
+            Returns only the requested attachment and not the complete document.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IAttachments.PutAsync(MyCouch.Requests.PutAttachmentRequest)">
+            <summary>
+            Used to add an attachment to an existing document.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IAttachments.DeleteAsync(System.String,System.String,System.String)">
+            <summary>
+            Used to delete an existing attachment.
+            </summary>
+            <param name="docId"></param>
+            <param name="docRev"></param>
+            <param name="attachmentName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IAttachments.DeleteAsync(MyCouch.Requests.DeleteAttachmentRequest)">
+            <summary>
+            Used to delete an existing attachment.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyCouch.IChanges">
+            <summary>
+            Used to consume the changes feed.
+            </summary>
+        </member>
+        <member name="M:MyCouch.IChanges.GetAsync(MyCouch.Requests.GetChangesRequest)">
+            <summary>
+            Lets you consume changes from the _changes stream.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <remarks>Only supports Normal and Long-polling feed. For Continuous feed, see <see cref="M:MyCouch.IChanges.GetAsync(MyCouch.Requests.GetChangesRequest,System.Action{System.String},System.Threading.CancellationToken)"/>.</remarks>
+        </member>
+        <member name="M:MyCouch.IChanges.GetAsync``1(MyCouch.Requests.GetChangesRequest)">
+            <summary>
+            Lets you consume changes from the _changes stream.
+            Included doc will be deserialized as <typeparamref name="TIncludedDoc"/>.
+            </summary>
+            <typeparam name="TIncludedDoc">The type used to deserialize any included doc as.
+            Supports string for JSON, which is the same as using the non generic overload.</typeparam>
+            <param name="request"></param>
+            <returns></returns>
+            <remarks>Only supports Normal and Long-polling feed. For Continuous feed, see <see cref="M:MyCouch.IChanges.GetAsync(MyCouch.Requests.GetChangesRequest,System.Action{System.String},System.Threading.CancellationToken)"/>.</remarks>
+        </member>
+        <member name="M:MyCouch.IChanges.GetAsync(MyCouch.Requests.GetChangesRequest,System.Action{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Lets you consume changes continuously from the _changes stream.
+            </summary>
+            <param name="request"></param>
+            <param name="onRead">Callback invoked when data is retrieved from the stream.</param>
+            <param name="cancellationToken">Used to end the reading of the stream.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MyCouch.IDatabases">
+            <summary>
+            Used to manage a database.
+            </summary>
+        </member>
+        <member name="M:MyCouch.IDatabases.PutAsync">
+            <summary>
+            Creates the database, but only if it does not already exist.
+            </summary>
+        </member>
+        <member name="M:MyCouch.IDatabases.DeleteAsync">
+            <summary>
+            Deletes the database.
+            </summary>
+        </member>
+        <member name="T:MyCouch.IDocuments">
+            <summary>
+            Used to access and manage documents. If you want to work with entities, POCOs,
+            use <see cref="T:MyCouch.IEntities"/> instead, via <see cref="P:MyCouch.IClient.Entities"/>.
+            </summary>
+        </member>
+        <member name="M:MyCouch.IDocuments.BulkAsync(MyCouch.Requests.BulkRequest)">
+            <summary>
+            Lets you use the underlying bulk API to insert, update and delete
+            documents.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.CopyAsync(System.String,System.String)">
+            <summary>
+            Copies the document having a document id matching <paramref name="srcId"/> to a new document
+            with a new id being <paramref name="newId"/>.
+            For more options use <see cref="M:MyCouch.IDocuments.CopyAsync(MyCouch.Requests.CopyDocumentRequest)"/> instead.
+            </summary>
+            <param name="srcId"></param>
+            <param name="newId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.CopyAsync(System.String,System.String,System.String)">
+            <summary>
+            Copies the document having a document id matching <paramref name="srcId"/> and rev matching <paramref name="srcRev"/>
+            to a new document with a new id being <paramref name="newId"/>.
+            For more options use <see cref="M:MyCouch.IDocuments.CopyAsync(MyCouch.Requests.CopyDocumentRequest)"/> instead.
+            </summary>
+            <param name="srcId"></param>
+            <param name="srcRev"></param>
+            <param name="newId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.CopyAsync(MyCouch.Requests.CopyDocumentRequest)">
+            <summary>
+            Copies the document having a document id matching <paramref name="request"/>.SrcId to a new document
+            with a new id being <paramref name="request"/>.NewId.
+            You can also specify a specific revision to copy via <paramref name="request"/>.SrcRev.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.ReplaceAsync(System.String,System.String,System.String)">
+            <summary>
+            Replaces the document having a document id matching <paramref name="trgId"/> and rev <paramref name="trgRev"/>
+            with the document having id matching <paramref name="srcId"/>.
+            </summary>
+            <param name="srcId"></param>
+            <param name="trgId"></param>
+            <param name="trgRev"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.ReplaceAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Replaces the document having a document id matching <paramref name="trgId"/> and rev <paramref name="trgRev"/>
+            with the document having id matching <paramref name="srcId"/> and rev matching <paramref name="srcRev"/>.
+            </summary>
+            <param name="srcId"></param>
+            <param name="srcRev"></param>
+            <param name="trgId"></param>
+            <param name="trgRev"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.ReplaceAsync(MyCouch.Requests.ReplaceDocumentRequest)">
+            <summary>
+            Copies the document having a document id matching <paramref name="request"/>.SrcId to a new document
+            with a new id being <paramref name="request"/>.NewId.
+            You can also specify a specific revision to copy via <paramref name="request"/>.SrcRev.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.ExistsAsync(System.String,System.String)">
+            <summary>
+            Makes a simple HEAD request which doesn not include the actual JSON document,
+            and returns any matched info for the <paramref name="id"/> and the optional
+            <paramref name="rev"/>.
+            </summary>
+            <param name="id"></param>
+            <param name="rev">optional</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.ExistsAsync(MyCouch.Requests.DocumentExistsRequest)">
+            <summary>
+            Makes a simple HEAD request which doesn not include the actual JSON document,
+            and returns any matched info for the <paramref name="request"/>.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.GetAsync(System.String,System.String)">
+            <summary>
+            Gets untyped response with the JSON representation of the document.
+            </summary>
+            <param name="id">The Id of the document.</param>
+            <param name="rev">
+            Optional. Lets you specify a specific document revision.
+            If not specified, you will get the latest document.
+            </param>
+            <returns>Untyped response with JSON.</returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.GetAsync(MyCouch.Requests.GetDocumentRequest)">
+            <summary>
+            Gets untyped response with the JSON representation of the document.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.PostAsync(System.String)">
+            <summary>
+            Inserts sent JSON document as it is. No additional metadata like doctype will be added.
+            </summary>
+            <param name="doc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.PostAsync(MyCouch.Requests.PostDocumentRequest)">
+            <summary>
+            Inserts sent JSON document as it is. No additional metadata like doctype will be added.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.PutAsync(System.String,System.String)">
+            <summary>
+            Inserts or Updates. The document <paramref name="doc"/> needs to contain the _id and for updates also the _rev field.
+            </summary>
+            <param name="id"></param>
+            <param name="doc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.PutAsync(System.String,System.String,System.String)">
+            <summary>
+            Inserts or Updates. The document <paramref name="doc"/> needs to contain the _id but not the _rev, neither for inserts nor for updates.
+            </summary>
+            <param name="id"></param>
+            <param name="rev"></param>
+            <param name="doc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.PutAsync(MyCouch.Requests.PutDocumentRequest)">
+            <summary>
+            Inserts or Updates. The document in passed <paramref name="request"/>.
+            The document needs to contain the _id but not the _rev, neither for inserts nor for updates.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.DeleteAsync(System.String,System.String)">
+            <summary>
+            Deletes the document that matches sent <paramref name="id"/> and <paramref name="rev"/>.
+            </summary>
+            <param name="id"></param>
+            <param name="rev"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IDocuments.DeleteAsync(MyCouch.Requests.DeleteDocumentRequest)">
+            <summary>
+            Deletes the document that matches sent <paramref name="request"/>.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyCouch.IEntities">
+            <summary>
+            Used to access and manage documents as entities.
+            </summary>
+        </member>
+        <member name="M:MyCouch.IEntities.GetAsync``1(System.String,System.String)">
+            <summary>
+            Gets typed entity-response (<see cref="T:MyCouch.Responses.EntityResponse`1"/> of <typeparamref name="T"/>)
+            representation of the document.
+            </summary>
+            <typeparam name="T">The type you want the document deserialized as.</typeparam>
+            <param name="id">The Id of the document.</param>
+            <param name="rev">
+            Optional. Lets you specify a specific document revision.
+            If not specified, you will get the latest document.
+            </param>
+            <returns>
+            Typed entity-response (<see cref="T:MyCouch.Responses.EntityResponse`1"/> of <typeparamref name="T"/>)
+            representation of the document
+            </returns>
+        </member>
+        <member name="M:MyCouch.IEntities.GetAsync``1(MyCouch.Requests.GetEntityRequest)">
+            <summary>
+            Gets typed entity-response (<see cref="T:MyCouch.Responses.EntityResponse`1"/> of <typeparamref name="T"/>)
+            representation of the document.
+            </summary>
+            <typeparam name="T">The type you want the document deserialized as.</typeparam>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IEntities.PostAsync``1(``0)">
+            <summary>
+            Inserts sent entity. The resulting JSON that is inserted will have some additional
+            meta-data contained in the JSON, like $doctype.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IEntities.PostAsync``1(MyCouch.Requests.PostEntityRequest{``0})">
+            <summary>
+            Inserts sent entity. The resulting JSON that is inserted will have some additional
+            meta-data contained in the JSON, like $doctype.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IEntities.PutAsync``1(``0)">
+            <summary>
+            Inserts or Updates sent entity and returns it in the response, and if successful, then with an
+            updated _rev value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IEntities.PutAsync``1(MyCouch.Requests.PutEntityRequest{``0})">
+            <summary>
+            Inserts or Updates sent entity and returns it in the response, and if successful, then with an
+            updated _rev value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IEntities.DeleteAsync``1(``0)">
+            <summary>
+            Deletes the document that matches the values of the document _id and _rev extracted from <paramref name="entity"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MyCouch.IEntities.Serializer">
+            <summary>
+            The Serializer associated with this <see cref="T:MyCouch.IEntities"/> instance. Use this if you want
+            to serialize or deserialize using entity conventions.
+            </summary>
+            <remarks>If you want the native, non convention based serializer, check <see cref="P:MyCouch.IClient.Serializer"/></remarks>
+        </member>
+        <member name="P:MyCouch.IEntities.Reflector">
+            <summary>
+            Used to get and set specific members of entities when you are using the
+            typed API.
+            </summary>
+        </member>
+        <member name="T:MyCouch.IViews">
+            <summary>
+            Used to query views.
+            </summary>
+        </member>
+        <member name="M:MyCouch.IViews.QueryAsync(MyCouch.Requests.QueryViewRequest)">
+            <summary>
+            Lets you perform a query by using a reusable <see cref="T:MyCouch.Requests.QueryViewRequest"/>.
+            Any returned Value and, or IncludedDoc of the response,
+            will be treated as JSON-strings.
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IViews.QueryAsync``1(MyCouch.Requests.QueryViewRequest)">
+            <summary>
+            Lets you perform a query by using a reusable <see cref="T:MyCouch.Requests.QueryViewRequest"/>.
+            Any returned Value of the response,
+            will be treated as defined by <typeparamref name="TValue"/>.
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IViews.QueryAsync``2(MyCouch.Requests.QueryViewRequest)">
+            <summary>
+            Lets you perform a query by using a reusable <see cref="T:MyCouch.Requests.QueryViewRequest"/>.
+            Any returned Value of the response,
+            will be treated as defined by <typeparamref name="TValue"/>.
+            Any returned IncludedDoc of the response,
+            will be treated as defined by <typeparamref name="TIncludedDoc"/>.
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <typeparam name="TIncludedDoc"></typeparam>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IViews.QueryAsync(System.String,System.String,System.Action{MyCouch.Requests.Configurators.QueryViewRequestConfigurator})">
+            <summary>
+            Creates and executes an <see cref="T:MyCouch.Requests.QueryViewRequest"/> on the fly.
+            Any returned Value and, or IncludedDoc of the response,
+            will be treated as JSON-strings.
+            </summary>
+            <param name="designDocument"></param>
+            <param name="viewname"></param>
+            <param name="configurator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IViews.QueryAsync``1(System.String,System.String,System.Action{MyCouch.Requests.Configurators.QueryViewRequestConfigurator})">
+            <summary>
+            Creates and executes an <see cref="T:MyCouch.Requests.QueryViewRequest"/> on the fly.
+            Any returned Value of the response,
+            will be treated as defined by <typeparamref name="TValue"/>.
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="designDocument"></param>
+            <param name="viewname"></param>
+            <param name="configurator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.IViews.QueryAsync``2(System.String,System.String,System.Action{MyCouch.Requests.Configurators.QueryViewRequestConfigurator})">
+            <summary>
+            Creates and executes an <see cref="T:MyCouch.Requests.QueryViewRequest"/> on the fly.
+            Any returned Value of the response,
+            will be treated as defined by <typeparamref name="TValue"/>.
+            Any returned IncludedDoc of the response,
+            will be treated as defined by <typeparamref name="TIncludedDoc"/>.
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <typeparam name="TIncludedDoc"></typeparam>
+            <param name="designDocument"></param>
+            <param name="viewname"></param>
+            <param name="configurator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.BulkRequest.Include(System.String[])">
+            <summary>
+            Includes documents for insert, updates or deletes. For deletes
+            you can also use <see cref="M:MyCouch.Requests.BulkRequest.Delete(System.String,System.String)"/>.
+            </summary>
+            <param name="docs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.BulkRequest.Delete(System.String,System.String)">
+            <summary>
+            Includes a document for deletion.
+            </summary>
+            <param name="id"></param>
+            <param name="rev"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.Stale(MyCouch.Stale)">
+            <summary>
+            Allow the results from a stale view to be used.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.IncludeDocs(System.Boolean)">
+            <summary>
+            Include the full content of the documents in the return;
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.Descending(System.Boolean)">
+            <summary>
+            Return the documents in descending by key order.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.Key``1(``0)">
+            <summary>
+            Return only documents that match the specified key.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.Key``1(``0[])">
+            <summary>
+            Return only documents that match the specified complex-key.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.Keys``1(``0[])">
+            <summary>
+            Returns only documents that matches any of the specified keys.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.StartKey``1(``0)">
+            <summary>
+            Return records starting with the specified key.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.StartKey``1(``0[])">
+            <summary>
+            Return records starting with the specified complex-key.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.StartKeyDocId(System.String)">
+            <summary>
+            Return records starting with the specified document ID.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.EndKey``1(``0)">
+            <summary>
+            Stop returning records when the specified key is reached.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.EndKey``1(``0[])">
+            <summary>
+            Stop returning records when the specified complex-key is reached.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.EndKeyDocId(System.String)">
+            <summary>
+            Stop returning records when the specified document ID is reached.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.InclusiveEnd(System.Boolean)">
+            <summary>
+            Specifies whether the specified end key should be included in the result.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.Skip(System.Int32)">
+            <summary>
+            Skip this number of records before starting to return the results.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.Limit(System.Int32)">
+            <summary>
+            Limit the number of the returned documents to the specified number.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.Reduce(System.Boolean)">
+            <summary>
+            Use the reduction function.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.UpdateSeq(System.Boolean)">
+            <summary>
+            Include the update sequence in the generated results.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.Group(System.Boolean)">
+            <summary>
+            The group option controls whether the reduce function reduces to a set of distinct keys or to a single result row.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Configurators.QueryViewRequestConfigurator.GroupLevel(System.Int32)">
+            <summary>
+            Specify the group level to be used.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:MyCouch.Requests.CopyDocumentRequest.SrcId">
+            <summary>
+            The Id of the document to copy.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.CopyDocumentRequest.SrcRev">
+            <summary>
+            Optional, the Rev of the document to copy.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.CopyDocumentRequest.NewId">
+            <summary>
+            The New Id of the new document being created as a copy.
+            </summary>
+        </member>
+        <member name="M:MyCouch.Requests.Factories.GetChangesHttpRequestFactory.ConvertRequestToJsonCompatibleKeyValues(MyCouch.Requests.GetChangesRequest)">
+            <summary>
+            Returns all configured options of <see cref="T:MyCouch.Requests.GetChangesRequest"/> as key values.
+            The values are formatted to JSON-compatible strings.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MyCouch.Requests.Factories.GetChangesHttpRequestFactory.KeyNames">
+            <summary>
+            Contains the string representation (Key) of
+            individual options for <see cref="T:MyCouch.Requests.GetChangesRequest"/>.
+            </summary>
+        </member>
+        <member name="M:MyCouch.Requests.Factories.QueryViewHttpRequestFactory.GetKeysAsJsonObject(MyCouch.Requests.QueryViewRequest)">
+            <summary>
+            Returns <see cref="P:MyCouch.Requests.QueryViewRequest.Keys"/> as compatible JSON document for use e.g.
+            with POST of keys against views.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Factories.QueryViewHttpRequestFactory.GenerateQueryStringParams(MyCouch.Requests.QueryViewRequest)">
+            <summary>
+            Generates <see cref="T:MyCouch.Requests.QueryViewRequest"/> configured values as querystring params.
+            </summary>
+            <remarks><see cref="P:MyCouch.Requests.QueryViewRequest.Keys"/> are not included in this string.</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:MyCouch.Requests.Factories.QueryViewHttpRequestFactory.ConvertRequestToJsonCompatibleKeyValues(MyCouch.Requests.QueryViewRequest)">
+            <summary>
+            Returns all configured options of <see cref="T:MyCouch.Requests.QueryViewRequest"/> as key values.
+            The values are formatted to JSON-compatible strings.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MyCouch.Requests.Factories.QueryViewHttpRequestFactory.KeyNames">
+            <summary>
+            Contains the string representation (Key) of
+            individual options for <see cref="T:MyCouch.Requests.QueryViewRequest"/>.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.GetChangesRequest.Feed">
+            <summary>
+            Select the type of changes feed to consume.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.GetChangesRequest.Style">
+            <summary>
+            Specifies how many revisions are returned in the changes array.
+            The default, main_only, will only return the current “winning” revision;
+            all_docs will return all leaf revisions (including conflicts and deleted former conflicts.)
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.GetChangesRequest.Since">
+            <summary>
+            Start the results from the change immediately after the given sequence number.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.GetChangesRequest.Limit">
+            <summary>
+            Limit number of result rows to the specified value.
+            </summary>
+            <remarks>Using 0 here has the same effect as 1: get a single result row</remarks>
+        </member>
+        <member name="P:MyCouch.Requests.GetChangesRequest.Descending">
+            <summary>
+            Return the change results in descending sequence order (most recent change first)
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.GetChangesRequest.Heartbeat">
+            <summary>
+            Set a millisecond value to have CouchDbReport to send a
+            newline at every tick where the length between the ticks
+            is the value you define.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.GetChangesRequest.Timeout">
+            <summary>
+            Maximum period in milliseconds to wait for a change before the response is sent,
+            even if there are no results.
+            </summary>
+            <remarks>
+            Only applicable for longpoll or continuous feeds.
+            60000 is also the default maximum timeout to prevent undetected dead connections.
+            </remarks>
+        </member>
+        <member name="P:MyCouch.Requests.GetChangesRequest.IncludeDocs">
+            <summary>
+            Determines if the response should include the docs
+            that are affected by the change(s).
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.GetChangesRequest.Filter">
+            <summary>
+            Set to a <example><![CDATA[designdoc/filtername]]></example> to reference a filter function
+            from a design document to selectively get updates. 
+            </summary>
+        </member>
+        <member name="T:MyCouch.Requests.QuerySystemViewRequest">
+            <summary>
+            Used to query builtin system views, e.g. the all_keys view.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.ViewIdentity">
+            <summary>
+            Identitfies the view that this Query request will be
+            performed against.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.Stale">
+            <summary>
+            Allow the results from a stale view to be used.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.IncludeDocs">
+            <summary>
+            Include the full content of the documents in the return.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.Descending">
+            <summary>
+            Return the documents in descending by key order.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.Key">
+            <summary>
+            Return only documents that match the specified key.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.Keys">
+            <summary>
+            Returns only documents that matches any of the specified keys.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.HasKeys">
+            <summary>
+            Indicates if any <see cref="P:MyCouch.Requests.QueryViewRequest.Keys"/> has been specified.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.StartKey">
+            <summary>
+            Return records starting with the specified key.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.StartKeyDocId">
+            <summary>
+            Return records starting with the specified document ID.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.EndKey">
+            <summary>
+            Stop returning records when the specified key is reached.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.EndKeyDocId">
+            <summary>
+            Stop returning records when the specified document ID is reached.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.InclusiveEnd">
+            <summary>
+            Specifies whether the specified end key should be included in the result.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.Skip">
+            <summary>
+            Skip this number of records before starting to return the results.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.Limit">
+            <summary>
+            Limit the number of the returned documents to the specified number.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.Reduce">
+            <summary>
+            Use the reduction function.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.UpdateSeq">
+            <summary>
+            Include the update sequence in the generated results.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.Group">
+            <summary>
+            The group option controls whether the reduce function reduces to a set of distinct keys or to a single result row.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.QueryViewRequest.GroupLevel">
+            <summary>
+            Specify the group level to be used.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.ReplaceDocumentRequest.SrcId">
+            <summary>
+            The Id of the document to copy.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.ReplaceDocumentRequest.SrcRev">
+            <summary>
+            Optional, the Rev of the document to copy.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.ReplaceDocumentRequest.TrgId">
+            <summary>
+            The Id of the document being replaced.
+            </summary>
+        </member>
+        <member name="P:MyCouch.Requests.ReplaceDocumentRequest.TrgRev">
+            <summary>
+            The Rev of the document being replaced.
+            </summary>
+        </member>
+        <member name="T:MyCouch.Responses.IResponseRow">
+            <summary>
+            Marker for response rows.
+            </summary>
+        </member>
+        <member name="T:MyCouch.Serialization.Converters.MultiTypeDeserializationJsonConverter">
+            <summary>
+            Used on specific properties that needs to support deserialization
+            to string or string-array or entity.
+            </summary>
+        </member>
+        <member name="T:MyCouch.Serialization.EntityContractResolver">
+            <summary>
+            When deserializing and serializing with this contract resolver,
+            Id and Rev members will be mapped according to conventions registrered
+            in members of the <see cref="F:MyCouch.Serialization.EntityContractResolver.EntityReflector"/>.
+            </summary>
+        </member>
+        <member name="T:MyCouch.Serialization.Writers.EntityJsonWriter">
+            <summary>
+            When serializing entities, this writer will use
+            conventions found in <see cref="P:MyCouch.Serialization.Writers.EntityJsonWriter.Conventions"/>,
+            which by default will e.g. inject info about doctype.
+            </summary>
+        </member>
+        <member name="T:MyCouch.ViewIdentity">
+            <summary>
+            Used to identify a certain view of a design document.
+            </summary>
+        </member>
+    </members>
+</doc>

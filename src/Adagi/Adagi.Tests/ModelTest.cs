@@ -8,6 +8,7 @@ namespace Adagi.Tests
     public class ModelTest
     {
         [TestMethod]
+        [TestCategory("Database Models")]
         public void TestModelType()
         {
             var feature = new Feature();

@@ -28,8 +28,9 @@ namespace Adagi.API
         }
 
         // POST api/properties
-        public void Post([FromBody]string value)
+        public async Task<object> Post([FromBody]Property value)
         {
+            return await Properties.Post(value);
         }
 
         // PUT api/properties/5

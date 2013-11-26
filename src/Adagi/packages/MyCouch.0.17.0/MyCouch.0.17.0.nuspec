@@ -22,7 +22,6 @@
     <summary>Simple async CouchDb and Cloudant client.</summary>
     <releaseNotes>Can be found on project site: https://github.com/danielwertheim/mycouch/wiki/release-notes</releaseNotes>
     <copyright>Copyright 2013 Daniel Wertheim</copyright>
-    <language />
     <tags>couchdb cloudant nosql json document-db documents poco async asynchronous winrt</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.0">
@@ -47,10 +46,5 @@
       <frameworkAssembly assemblyName="System.Configuration" targetFramework=".NETFramework4.5" />
       <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.5" />
     </frameworkAssemblies>
-    <references>
-      <reference file="MyCouch.Net40.dll" />
-      <reference file="MyCouch.Net45.dll" />
-      <reference file="MyCouch.NetCore45.dll" />
-    </references>
   </metadata>
 </package>

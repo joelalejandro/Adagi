@@ -1,0 +1,14 @@
+﻿{
+	"Language": "es-ar",
+	"Translations": {
+		"global": {
+			"Welcome": "Bienvenido",
+			"Login": "Iniciar sesión",
+			"Username": "Nombre de usuario",
+			"Password": "Contraseña",
+			"Not an user?": "¿No tienes cuenta?",
+			"Sign up": "Registrate",
+			"Connect": "Conectar"
+		}
+	}
+}

@@ -1,0 +1,147 @@
+﻿@import "../fonts/dejavu/sans/extralight/stylesheet.css";
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "dejavu_sansextralight", sans-serif;
+    background: #eee;
+}
+
+body > header {
+    background: #fff;
+    padding: 2em 3em;
+}
+
+#logo {
+    width: 161px;
+    height: 39px;
+    background: url(Images/logo.png) no-repeat;
+    display: block;
+}
+
+.login {
+    background-image: url(Images/login-background.png);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.page-headline {
+    font-family: "dejavu_sansextralight", sans-serif;
+    font-size: 40px;
+    -webkit-text-shadow: 2px 2px 1px #fff;
+    text-shadow: 2px 2px 1px #fff;
+    color: #B8B8C7;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+}
+
+.card .pad {
+    padding: 20px 30px;
+}
+
+.card .card-title {
+    font-family: "dejavu_sansextralight", sans-serif;
+    font-size: 28px;
+    color: #B8B8C7;
+}
+
+.card i {
+    float: right;
+    font-size: 40px;
+    color: #B8B8C7;
+    margin: 3px;
+}
+
+.card input {
+    display: block;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    font-family: "dejavu_sansextralight", sans-serif;
+    font-size: 16px;
+    color: #B8B8C7;
+    border: none;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.card input:focus {
+    box-shadow: 0px 0px 3px #861758;
+    border: none;
+    outline: none;
+}
+
+.card .uppercase {
+    text-transform: uppercase;
+}
+
+.card .card-body {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.card footer .btn.btn-primary {
+    background: #5E643C;
+    color: #fff;
+    font-family: "dejavu_sansextralight", sans-serif;
+    font-size: 16px;
+    -webkit-text-shadow: none;
+    text-shadow: none;
+    border: none;
+    cursor: pointer;
+    width: 55%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+
+.card footer .btn.btn-primary:hover {
+    background: #7E845C;
+}
+
+.card footer .btn.btn-primary label {
+    font-weight: normal;
+    padding: 7px 0px;
+    cursor: pointer;
+}
+
+.card footer .btn.btn-primary i {
+    color: #fff;
+    font-size: 30px;
+    float: left;
+}
+
+.login-card-container {
+    width: 20%;
+    margin: 0px auto;
+}
+.sign-up-box {
+    line-height: 18px;
+}
+.sign-up-box small {
+    text-transform: uppercase;
+    font-size: 10px;
+}
+.sign-up-box a {
+    display: block;
+    font-size: 24px;
+    color: #861758;
+}
+.sign-up-box a:hover {
+    text-decoration: none;
+    color: #C65798;
+}

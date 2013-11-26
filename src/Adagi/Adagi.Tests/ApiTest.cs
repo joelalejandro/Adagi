@@ -135,5 +135,9 @@ namespace Adagi.Tests
         }
 
         #endregion
+
+        #region Auth API ##########################################################################
+
+        #endregion
     }
 }

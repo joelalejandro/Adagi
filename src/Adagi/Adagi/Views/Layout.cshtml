@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Adagi";
+    
+    if (Adagi.MvcApplication.DebugMode) {
+        Dicse.Json.JsonTranslator.Default.Dictionaries.Clear();
+        Adagi.TranslationConfig.ConfigureTranslations(Dicse.Json.JsonTranslator.Default);
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    @Styles.Render("~/Content/bootstrap", "~/Content/font-awesome", "~/Content/adagi")
+</head>
+<body class="@RenderSection("bodyClass", false)">
+    <header>
+        <a href="/" id="logo"></a>
+    </header>
+    <div class="page">
+        @RenderSection("body")
+    </div>
+    @RenderSection("footer", false)
+</body>
+</html>

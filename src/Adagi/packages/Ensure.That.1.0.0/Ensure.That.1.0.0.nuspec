@@ -14,8 +14,5 @@
     <summary>Yet another guard clause project.</summary>
     <copyright>©Daniel Wertheim</copyright>
     <tags>argument validation guard clause</tags>
-    <references>
-      <reference file="EnsureThat.dll" />
-    </references>
   </metadata>
 </package>
